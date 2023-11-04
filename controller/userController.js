@@ -43,8 +43,8 @@ const login = async (req, res) => {
         if (!validated) {
             return res.send({ msg: "user or password is wrong " });
         }
-        const token = jwt.sign({ email: details.email ,name:details.name}, secretkey, { expiresIn: "30 days" })
-        return res.send({ msg: details.name , token: token });
+        const token = jwt.sign({ email: details.email}, secretkey, { expiresIn: "30 days" })
+        return res.send({ msg: `Login succesfull with this email:${details.email}` , token: token });
     }
     else {
         return res.send({ msg: "user is login failled, Try Again" });
